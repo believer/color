@@ -1,5 +1,7 @@
 # color
 
+Calculate WCAG ratio and score between two colors. https://color.willcodefor.beer
+
 ## Run Project
 
 ```sh
@@ -7,7 +9,7 @@ npm install
 npm start
 # in another tab
 npm run server
-`````
+```
 
 When both processes are running, open a browser at http://localhost:3000
 
@@ -17,9 +19,9 @@ When both processes are running, open a browser at http://localhost:3000
 npm run clean
 npm run build
 npm run webpack:production
-`````
+```
 
-This will replace the development artifact ```build/Index.js``` for an optimized
+This will replace the development artifact `build/Index.js` for an optimized
 version as well as copy `public/index.html` into `build/`. You can then deploy the
 contents of the `build` directory (`index.html` and `Index.js`).
 
@@ -45,4 +47,3 @@ tests and created a release. There are some steps that need to be taken to enabl
 ```
 "now-build": "npm run build && npm run webpack:production"
 ```
-
