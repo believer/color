@@ -1,4 +1,4 @@
-# color
+# Color
 
 Calculate WCAG ratio and score between two colors. https://color.willcodefor.beer
 
