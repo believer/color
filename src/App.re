@@ -29,7 +29,7 @@ let make = () => {
     </div>
     <div
       className="flex justify-center py-4 bg-white border-t space-x-2 border-color-gray200">
-      <TextField
+      <ColorField
         id="foreground-color"
         label="Foreground color"
         onChange={e => {
@@ -39,7 +39,7 @@ let make = () => {
         }}
         value=foregroundColor
       />
-      <TextField
+      <ColorField
         id="background-color"
         label="Background color"
         onChange={e => {
