@@ -1,0 +1,30 @@
+{
+  "name": "color",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs"
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": ["reason-react"],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest",
+    "bs-react-testing-library",
+    "bs-jest-dom"
+  ],
+  "refmt": 3,
+  "warnings": {
+    "number": "+A-9-40-42-48",
+    "error": "+A-3-40-42-44-102"
+  }
+}
