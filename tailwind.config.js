@@ -1,7 +1,11 @@
 module.exports = {
+  purge: ["./src/**/*.bs.js"],
   theme: {
-    extend: {}
+    extend: {},
   },
   variants: {},
-  plugins: []
-}
+  plugins: [],
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
+};
