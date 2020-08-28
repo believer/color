@@ -1,6 +1,6 @@
 # Color
 
-Calculate WCAG ratio and score between two colors. https://color.willcodefor.beer
+Calculate WCAG ratio and score between two colors using [wcag-color](https://github.com/believer/wcag-color/) https://color.willcodefor.beer
 
 ## Run Project
 
