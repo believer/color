@@ -1,5 +1,7 @@
 # Color
 
+[![](https://github.com/believer/color/workflows/Release/badge.svg)](https://github.com/believer/color/actions?workflow=Release)
+
 Calculate WCAG ratio and score between two colors using [wcag-color](https://github.com/believer/wcag-color/).
 Try it at [https://color.willcodefor.beer](https://color.willcodefor.beer)
 
