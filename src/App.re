@@ -41,7 +41,7 @@ let make = () => {
       <div
         className="flex items-center text-lg space-x-2"
         style={ReactDOMStyle.make(
-          ~color=WCAG.Best.make("#A0AEC0", "#4A5568", backgroundColor),
+          ~color=WCAG.Best.make("#ffffff", "#000000", backgroundColor),
           (),
         )}>
         {switch (WCAG.Score.make(foregroundColor, backgroundColor)) {
