@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/believer/color/compare/v1.2.0...v1.2.1) (2020-08-29)
+
+
+### Bug Fixes
+
+* handle hsl without percent and hex without hash ([1087405](https://github.com/believer/color/commit/1087405ca7f677190685b33420b1c45b23ba58c3))
+
 # [1.2.0](https://github.com/believer/color/compare/v1.1.0...v1.2.0) (2020-08-29)
 
 
