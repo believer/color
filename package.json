@@ -33,12 +33,28 @@
     "css-loader": "4.2.2",
     "html-webpack-plugin": "4.3.0",
     "is-ci-cli": "2.1.2",
+    "jest": "26.4.2",
     "postcss-loader": "3.0.0",
+    "reason-test-framework": "0.3.2",
     "rimraf": "3.0.2",
     "style-loader": "1.2.1",
     "tailwindcss": "1.7.5",
     "webpack": "4.44.1",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.0"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "roots": [
+      "test"
+    ],
+    "testMatch": [
+      "**/*__test.bs.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(bs-platform)/)"
+    ]
   }
 }

@@ -7,7 +7,8 @@
     {
       "dir": "src",
       "subdirs": true
-    }
+    },
+    { "dir": "test", "subdirs": true, "type": "dev" }
   ],
   "package-specs": [
     {
@@ -17,7 +18,7 @@
   ],
   "suffix": ".bs.js",
   "namespace": true,
-  "bs-dependencies": ["reason-react", "bs-webapi"],
+  "bs-dependencies": ["reason-react", "bs-webapi", "reason-test-framework"],
   "refmt": 3,
   "warnings": {
     "number": "+A-9-40-42-48",
