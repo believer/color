@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/believer/color/compare/v1.1.0...v1.2.0) (2020-08-29)
+
+
+### Bug Fixes
+
+* increase score color contrast ([dc11a94](https://github.com/believer/color/commit/dc11a943b7057f797fc57b53b254bf41bdb2d69c))
+
+
+### Features
+
+* add color picker fixes [#3](https://github.com/believer/color/issues/3) ([3a39e7d](https://github.com/believer/color/commit/3a39e7d1feda9c440feba13d5b652cdf61efd54f))
+
 # [1.1.0](https://github.com/believer/color/compare/v1.0.0...v1.1.0) (2020-08-28)
 
 
