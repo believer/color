@@ -90,7 +90,7 @@ module HEX = {
 module Validate = {
   let make = input => {
     let valid = %re(
-      `/(^#\\w{3}$)|(^#\\w{6}$)|(^rgb\\(\\d{1,3},\\s?\\d{1,3},\\s?\\d{1,3}\\)$)|(^hsl\\(\\d{1,3},\\s?\\d{1,3}%,\\s?\\d{1,3}%\\)$)/`
+      `/(^#?\\w{3}$)|(^#?\\w{6}$)|(^rgb\\(\\d{1,3},\\s?\\d{1,3},\\s?\\d{1,3}\\)$)|(^hsl\\(\\d{1,3},\\s?\\d{1,3}%?,\\s?\\d{1,3}%?\\)$)/ig`
     )
 
     Js.Re.test_(valid, input)
@@ -182,6 +182,7 @@ module Best = {
 
     switch (firstRatio, secondRatio) {
     | (Some(f), Some(s)) when f > s => first
+    | (Some(_), None) => first
     | _ => second
     }
   }
