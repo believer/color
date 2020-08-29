@@ -1,40 +1,27 @@
+type state = {colors: (string, string)};
+
+type action =
+  | SetForegroundColor(string)
+  | SetBackgroundColor(string);
+
 [@react.component]
 let make = () => {
-  let (backgroundColor, setBackgroundColor) = React.useState(() => "#000000");
-  let (foregroundColor, setForegroundColor) = React.useState(() => "#ffffff");
-  let (displayPasteBoard, setDisplayPasteBoard) = React.useState(() => false);
-  let (clipboardData, setClipboardData) = Clipboard.use();
+  let (state, dispatch) =
+    React.useReducer(
+      (state, action) => {
+        let (foregroundColor, backgroundColor) = state.colors;
 
-  React.useEffect1(
-    () => {
-      switch (clipboardData) {
-      | Some(_) => setDisplayPasteBoard(_ => true)
-      | None => ()
-      };
+        switch (action) {
+        | SetBackgroundColor(color) => {colors: (foregroundColor, color)}
+        | SetForegroundColor(color) => {colors: (color, backgroundColor)}
+        };
+      },
+      {colors: ("#ffffff", "#000000")},
+    );
+  let (foregroundColor, backgroundColor) = state.colors;
 
-      None;
-    },
-    [|clipboardData|],
-  );
-
-  let setPasteAsForegroundColor = _ => {
-    switch (clipboardData) {
-    | Some(data) =>
-      setForegroundColor(_ => data);
-      setClipboardData(_ => None);
-      setDisplayPasteBoard(_ => false);
-    | None => ()
-    };
-  };
-
-  let setPasteAsBackgroundColor = _ => {
-    switch (clipboardData) {
-    | Some(data) =>
-      setBackgroundColor(_ => data);
-      setClipboardData(_ => None);
-      setDisplayPasteBoard(_ => false);
-    | None => ()
-    };
+  let handleChange = event => {
+    event->ReactEvent.Form.target##value->Js.String2.trim;
   };
 
   <div className="flex flex-col min-h-screen ">
@@ -44,12 +31,11 @@ let make = () => {
       <div
         className="text-6xl font-bold"
         style={ReactDOMStyle.make(~color=foregroundColor, ())}>
-        {switch (WCAG.Score.make(foregroundColor, backgroundColor)) {
-         | AAA => "AAA"->React.string
-         | AA => "AA"->React.string
-         | AALarge => "AA Large"->React.string
-         | Fail => "Fail"->React.string
-         | Invalid => React.null
+        {switch (
+           WCAG.Score.(make(foregroundColor, backgroundColor)->toString)
+         ) {
+         | Some(score) => score->React.string
+         | None => React.null
          }}
       </div>
       <div
@@ -86,38 +72,10 @@ let make = () => {
            }}
         </span>
       </div>
-      {switch (displayPasteBoard) {
-       | false => React.null
-       | true =>
-         <div
-           className="absolute inset-0 flex flex-col items-center justify-center text-gray-800 bg-black bg-opacity-75">
-           <div className="p-5 py-6 bg-white rounded">
-             {switch (clipboardData) {
-              | Some(color) =>
-                <div className="flex flex-col items-center mb-5 font-bold">
-                  <div
-                    className="w-16 h-16 mb-2 rounded shadow-lg"
-                    style={ReactDOMStyle.make(~backgroundColor=color, ())}
-                  />
-                  {React.string(color)}
-                </div>
-              | None => React.null
-              }}
-             <div className="flex space-x-2">
-               <button
-                 className="px-5 py-2 text-sm font-medium text-white rounded-sm bg-primary"
-                 onClick=setPasteAsForegroundColor>
-                 {React.string("Set as foreground color")}
-               </button>
-               <button
-                 className="px-5 py-2 text-sm font-medium text-white rounded-sm bg-primary"
-                 onClick=setPasteAsBackgroundColor>
-                 {React.string("Set as background color")}
-               </button>
-             </div>
-           </div>
-         </div>
-       }}
+      <PasteBoard
+        setForegroundColor={color => dispatch(SetForegroundColor(color))}
+        setBackgroundColor={color => dispatch(SetBackgroundColor(color))}
+      />
     </div>
     <div
       className="flex justify-center py-4 bg-white border-t space-x-2 border-color-gray200">
@@ -125,9 +83,8 @@ let make = () => {
         id="foreground-color"
         label="Foreground color"
         onChange={e => {
-          let value = e->ReactEvent.Form.target##value;
-
-          setForegroundColor(_ => Js.String2.trim(value));
+          let value = handleChange(e);
+          dispatch(SetForegroundColor(value));
         }}
         value=foregroundColor
       />
@@ -135,8 +92,8 @@ let make = () => {
         id="background-color"
         label="Background color"
         onChange={e => {
-          let value = e->ReactEvent.Form.target##value;
-          setBackgroundColor(_ => Js.String2.trim(value));
+          let value = handleChange(e);
+          dispatch(SetBackgroundColor(value));
         }}
         value=backgroundColor
       />

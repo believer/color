@@ -174,6 +174,14 @@ module Score = {
     | None => Invalid
     };
 
+  let toString =
+    fun
+    | AAA => Some("AAA")
+    | AA => Some("AA")
+    | AALarge => Some("AA Large")
+    | Fail => Some("Fail")
+    | Invalid => None;
+
   let make = (foreground, background) =>
     Ratio.make(foreground, background) |> calculateFromRatio;
 };
