@@ -65,12 +65,10 @@ let make = () => {
          | Fail
          | Invalid => React.null
          }}
-        <span>
-          {switch (WCAG.Ratio.make(foregroundColor, backgroundColor)) {
-           | Some(r) => React.string("Score: " ++ Js.Float.toString(r))
-           | None => React.null
-           }}
-        </span>
+        {switch (WCAG.Ratio.make(foregroundColor, backgroundColor)) {
+         | Some(r) => <span> {React.float(r)} </span>
+         | None => React.null
+         }}
       </div>
       <PasteBoard
         setForegroundColor={color => dispatch(SetForegroundColor(color))}
