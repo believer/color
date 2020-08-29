@@ -1,4 +1,4 @@
-[@react.component]
+@react.component
 let make = (~id, ~value, ~label, ~onChange) => {
   <div>
     <label className="block mb-1 text-xs font-bold text-gray-700" htmlFor=id>
@@ -18,13 +18,10 @@ let make = (~id, ~value, ~label, ~onChange) => {
         className="px-4 py-2 text-sm bg-transparent border border-gray-500 rounded-r outline-none"
         id
         type_="text"
-        style={ReactDOMStyle.make(
-          ~borderColor={WCAG.Validate.make(value) ? "" : "#f56565"},
-          (),
-        )}
+        style={ReactDOMStyle.make(~borderColor={WCAG.Validate.make(value) ? "" : "#f56565"}, ())}
         onChange
         value
       />
     </div>
-  </div>;
-};
+  </div>
+}
