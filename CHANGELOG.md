@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/believer/color/compare/v1.2.1...v1.2.2) (2020-08-30)
+
+
+### Bug Fixes
+
+* indicate when colors are equal fixes [#5](https://github.com/believer/color/issues/5) ([41a06e3](https://github.com/believer/color/commit/41a06e336e73fc0ec6fe98a7bf4ce250c99d7f71))
+* support for hex colors without hash fixes [#4](https://github.com/believer/color/issues/4) ([974d513](https://github.com/believer/color/commit/974d5132978284b9a76723bad80e37817e66247c))
+
 ## [1.2.1](https://github.com/believer/color/compare/v1.2.0...v1.2.1) (2020-08-29)
 
 
