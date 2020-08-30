@@ -161,6 +161,7 @@ module Score = {
     | AA
     | AALarge
     | Fail
+    | Equal
     | Invalid
 
   let calculateFromRatio = ratio =>
@@ -168,6 +169,7 @@ module Score = {
     | Some(r) when r >= 7.0 => AAA
     | Some(r) when r >= 4.5 => AA
     | Some(r) when r >= 3.0 => AALarge
+    | Some(r) when r == 1.0 => Equal
     | Some(_) => Fail
     | None => Invalid
     }
@@ -178,6 +180,7 @@ module Score = {
     | AA => Some("AA")
     | AALarge => Some("AA Large")
     | Fail => Some("Fail")
+    | Equal => Some("Equal")
     | Invalid => None
     }
 

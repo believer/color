@@ -28,6 +28,14 @@ let make = () => {
         className="text-6xl font-bold"
         style={ReactDOMStyle.make(~color=WCAG.Validate.parse(foregroundColor), ())}>
         {switch WCAG.Score.make(foregroundColor, backgroundColor)->WCAG.Score.toString {
+        | Some("Equal") =>
+          <div
+            style={ReactDOMStyle.make(
+              ~color=WCAG.Best.make("#ffffff", "#000000", backgroundColor),
+              (),
+            )}>
+            {"Colors are the same"->React.string}
+          </div>
         | Some(score) => score->React.string
         | None => React.null
         }}
@@ -54,7 +62,7 @@ let make = () => {
               />
             </svg>
           </span>
-        | Fail | Invalid => React.null
+        | Equal | Fail | Invalid => React.null
         }}
         {switch WCAG.Ratio.make(foregroundColor, backgroundColor) {
         | Some(r) => <span> {React.string("Score: ")} {React.float(r)} </span>
