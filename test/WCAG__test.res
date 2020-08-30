@@ -72,3 +72,21 @@ describe("Score", ({test}) => {
     })
   )
 })
+
+describe("Validate", ({test}) => {
+  test("parses hex colors", ({expect}) => {
+    expect.string(Validate.parse("#ffffff")).toEqual("#ffffff")
+    expect.string(Validate.parse("#0088FF")).toEqual("#0088FF")
+    expect.string(Validate.parse("ffffff")).toEqual("#ffffff")
+  })
+
+  test("parses rgb colors", ({expect}) => {
+    expect.string(Validate.parse("rgb(255,255,255)")).toEqual("rgb(255,255,255)")
+    expect.string(Validate.parse("rgb(255, 255, 255)")).toEqual("rgb(255, 255, 255)")
+  })
+
+  test("parses hsl colors", ({expect}) => {
+    expect.string(Validate.parse("hsl(255,30%,100%)")).toEqual("hsl(255,30%,100%)")
+    expect.string(Validate.parse("hsl(360, 30, 80%)")).toEqual("hsl(360, 30, 80%)")
+  })
+})

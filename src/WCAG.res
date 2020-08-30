@@ -90,10 +90,19 @@ module HEX = {
 module Validate = {
   let make = input => {
     let valid = %re(
-      `/(^#?\\w{3}$)|(^#?\\w{6}$)|(^rgb\\(\\d{1,3},\\s?\\d{1,3},\\s?\\d{1,3}\\)$)|(^hsl\\(\\d{1,3},\\s?\\d{1,3}%?,\\s?\\d{1,3}%?\\)$)/ig`
+      `/(^#?\\w{3}$)|(^#?\\w{6}$)|(^rgb\\(\\d{1,3},\\s?\\d{1,3},\\s?\\d{1,3}\\)$)|(^hsl\\(\\d{1,3},\\s?\\d{1,3}%?,\\s?\\d{1,3}%?\\)$)/`
     )
 
     Js.Re.test_(valid, input)
+  }
+
+  let parse = input => {
+    let hex = %re(`/(^#?\\w{3}$)|(^#?\\w{6}$)/`)
+
+    switch input {
+    | input when hex->Js.Re.test_(input) => `#${Utils.removeHash(input)}`
+    | input => input
+    }
   }
 }
 

@@ -23,8 +23,10 @@ let make = () => {
   <div className="flex flex-col min-h-screen ">
     <div
       className="relative flex flex-col items-center justify-center flex-1"
-      style={ReactDOMStyle.make(~backgroundColor, ())}>
-      <div className="text-6xl font-bold" style={ReactDOMStyle.make(~color=foregroundColor, ())}>
+      style={ReactDOMStyle.make(~backgroundColor=WCAG.Validate.parse(backgroundColor), ())}>
+      <div
+        className="text-6xl font-bold"
+        style={ReactDOMStyle.make(~color=WCAG.Validate.parse(foregroundColor), ())}>
         {switch WCAG.Score.make(foregroundColor, backgroundColor)->WCAG.Score.toString {
         | Some(score) => score->React.string
         | None => React.null
@@ -55,7 +57,7 @@ let make = () => {
         | Fail | Invalid => React.null
         }}
         {switch WCAG.Ratio.make(foregroundColor, backgroundColor) {
-        | Some(r) => <span> {React.float(r)} </span>
+        | Some(r) => <span> {React.string("Score: ")} {React.float(r)} </span>
         | None => React.null
         }}
       </div>

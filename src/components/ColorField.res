@@ -8,7 +8,7 @@ let make = (~id, ~value, ~label, ~onChange) => {
       <label
         className="w-10 h-full border border-r-0 border-gray-500 rounded-l"
         style={ReactDOMStyle.make(
-          ~backgroundColor=value,
+          ~backgroundColor=WCAG.Validate.parse(value),
           ~borderColor={WCAG.Validate.make(value) ? "" : "#f56565"},
           (),
         )}>
