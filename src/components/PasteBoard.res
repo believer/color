@@ -40,12 +40,13 @@ let make = (~setForegroundColor, ~setBackgroundColor) => {
       <div className="p-5 py-6 bg-white rounded">
         {switch clipboardData {
         | Some(color) =>
-          <div className="flex flex-col items-center mb-5 font-bold">
+          <div className="flex flex-col items-center mb-5">
             <div
               className="w-16 h-16 mb-2 rounded shadow-lg"
-              style={ReactDOMStyle.make(~backgroundColor=color, ())}
+              style={ReactDOMStyle.make(~backgroundColor=WCAG.Validate.parse(color), ())}
             />
-            {React.string(color)}
+            {React.string("You pasted the color: ")}
+            <span className="font-bold"> {color->WCAG.Validate.parse->React.string} </span>
           </div>
         | None => React.null
         }}
