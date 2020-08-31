@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/believer/color/compare/v1.2.2...v1.2.3) (2020-08-31)
+
+
+### Bug Fixes
+
+* handle pasted hex colors without hash ([eafc738](https://github.com/believer/color/commit/eafc738c9976f981cecc43e73f75f0011412d524))
+
 ## [1.2.2](https://github.com/believer/color/compare/v1.2.1...v1.2.2) (2020-08-30)
 
 
