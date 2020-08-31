@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/believer/color/compare/v1.2.3...v1.3.0) (2020-08-31)
+
+
+### Features
+
+* add score explanation and paste hint ([cabfb9a](https://github.com/believer/color/commit/cabfb9a24a9781d710197de5ba2755094dc246fe))
+
 ## [1.2.3](https://github.com/believer/color/compare/v1.2.2...v1.2.3) (2020-08-31)
 
 
