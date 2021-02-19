@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/believer/color/compare/v1.3.0...v1.4.0) (2021-02-19)
+
+
+### Features
+
+* add fg and bg url params for colors ([8c0cfa4](https://github.com/believer/color/commit/8c0cfa4c8657837de288a93d2dfbb0d477fd1be7))
+
 # [1.3.0](https://github.com/believer/color/compare/v1.2.3...v1.3.0) (2020-08-31)
 
 

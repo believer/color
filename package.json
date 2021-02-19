@@ -1,6 +1,6 @@
 {
   "name": "color",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "scripts": {
     "build": "bsb -make-world",
     "start": "cross-env BS_WATCH_CLEAR=true bsb -make-world -w",
