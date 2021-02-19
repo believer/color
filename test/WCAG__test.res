@@ -1,5 +1,4 @@
 open TestFramework
-open WCAG
 
 describe("Best", ({test}) => {
   test("finds the best foreground color for a given background", ({expect}) => {
@@ -10,7 +9,7 @@ describe("Best", ({test}) => {
       ("rgb(255,255,255)", "#000000", "#fd8b56", "#000000"),
       ("hsl(0,0,100%)", "#000000", "#3e74b1", "hsl(0,0,100%)"),
     }->Belt.List.forEach(((one, two, bg, expected)) => {
-      expect.string(Best.make(one, two, bg)).toEqual(expected)
+      expect.string(WCAG.Best.make(one, two, bg)).toEqual(expected)
     })
   })
 })
@@ -40,53 +39,53 @@ describe("Ratio", ({test}) => {
       ("hsl(0, 100%, 40%)", "#fff", 5.89),
       ("hsl(360, 100%, 40%)", "#fff", 5.89),
     }->Belt.List.forEach(((fg, bg, expected)) => {
-      expect.value(Ratio.make(fg, bg)).toEqual(Some(expected))
+      expect.value(WCAG.Ratio.make(fg, bg)).toEqual(Some(expected))
     })
   })
 
   test("validates colors", ({expect}) => {
-    expect.value(Ratio.make("#ffff", "#000000")).toEqual(None)
+    expect.value(WCAG.Ratio.make("#ffff", "#000000")).toEqual(None)
   })
 })
 
 describe("Score", ({test}) => {
   test("#calculateFromRatio", ({expect}) => {
     list{
-      (Some(7.1), Score.AAA),
+      (Some(7.1), WCAG.Score.AAA),
       (Some(4.6), AA),
       (Some(3.9), AALarge),
       (Some(2.9), Fail),
     }->Belt.List.forEach(((ratio, score)) => {
-      expect.value(Score.calculateFromRatio(ratio)).toEqual(score)
+      expect.value(WCAG.Score.calculateFromRatio(ratio)).toEqual(score)
     })
   })
 
   test("#make", ({expect}) =>
     list{
-      ("#ffffff", "#000000", Score.AAA),
+      ("#ffffff", "#000000", WCAG.Score.AAA),
       ("#ffffff", "#666666", AA),
       ("#ffffff", "#888888", AALarge),
       ("#ffffff", "#cccccc", Fail),
     }->Belt.List.forEach(((foreground, background, score)) => {
-      expect.value(Score.make(foreground, background)).toEqual(score)
+      expect.value(WCAG.Score.make(foreground, background)).toEqual(score)
     })
   )
 })
 
 describe("Validate", ({test}) => {
   test("parses hex colors", ({expect}) => {
-    expect.string(Validate.parse("#ffffff")).toEqual("#ffffff")
-    expect.string(Validate.parse("#0088FF")).toEqual("#0088FF")
-    expect.string(Validate.parse("ffffff")).toEqual("#ffffff")
+    expect.string(WCAG.Validate.parse("#ffffff")).toEqual("#ffffff")
+    expect.string(WCAG.Validate.parse("#0088FF")).toEqual("#0088FF")
+    expect.string(WCAG.Validate.parse("ffffff")).toEqual("#ffffff")
   })
 
   test("parses rgb colors", ({expect}) => {
-    expect.string(Validate.parse("rgb(255,255,255)")).toEqual("rgb(255,255,255)")
-    expect.string(Validate.parse("rgb(255, 255, 255)")).toEqual("rgb(255, 255, 255)")
+    expect.string(WCAG.Validate.parse("rgb(255,255,255)")).toEqual("rgb(255,255,255)")
+    expect.string(WCAG.Validate.parse("rgb(255, 255, 255)")).toEqual("rgb(255, 255, 255)")
   })
 
   test("parses hsl colors", ({expect}) => {
-    expect.string(Validate.parse("hsl(255,30%,100%)")).toEqual("hsl(255,30%,100%)")
-    expect.string(Validate.parse("hsl(360, 30, 80%)")).toEqual("hsl(360, 30, 80%)")
+    expect.string(WCAG.Validate.parse("hsl(255,30%,100%)")).toEqual("hsl(255,30%,100%)")
+    expect.string(WCAG.Validate.parse("hsl(360, 30, 80%)")).toEqual("hsl(360, 30, 80%)")
   })
 })

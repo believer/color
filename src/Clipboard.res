@@ -2,7 +2,7 @@ open Webapi
 
 module Data = {
   external toClipboardEvent: Dom.Event.t => Dom.ClipboardEvent.t = "%identity"
-  @bs.send external make: ('a, string) => string = "getData"
+  @send external make: ('a, string) => string = "getData"
 }
 
 let use = () => {

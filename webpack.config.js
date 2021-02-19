@@ -8,20 +8,20 @@ module.exports = {
   mode: isProd ? "production" : "development",
   output: {
     path: outputDir,
-    filename: "index.[hash].js",
-    publicPath: "/"
+    filename: "index.[fullhash].js",
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html"
-    })
+      template: "public/index.html",
+    }),
   ],
   devServer: {
     compress: true,
     contentBase: outputDir,
     port: process.env.PORT || 3000,
     historyApiFallback: true,
-    stats: 'minimal'
+    stats: "minimal",
   },
   module: {
     rules: [
@@ -30,10 +30,9 @@ module.exports = {
         use: [
           "style-loader",
           { loader: "css-loader", options: { importLoaders: 1 } },
-          "postcss-loader"
-        ]
-      }
-    ]
-  }
+          "postcss-loader",
+        ],
+      },
+    ],
+  },
 };
-
