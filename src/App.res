@@ -6,6 +6,8 @@ type action =
 
 @react.component
 let make = () => {
+  let colors = Hooks.useColorFromUrl()
+
   let (state, dispatch) = React.useReducer((state, action) => {
     let (foregroundColor, backgroundColor) = state.colors
 
@@ -13,7 +15,7 @@ let make = () => {
     | SetBackgroundColor(color) => {colors: (foregroundColor, color)}
     | SetForegroundColor(color) => {colors: (color, backgroundColor)}
     }
-  }, {colors: ("#ffffff", "#000000")})
+  }, {colors: colors})
   let (foregroundColor, backgroundColor) = state.colors
 
   let handleChange = event => {
